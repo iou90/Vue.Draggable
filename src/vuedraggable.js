@@ -90,7 +90,8 @@
         type: Object,
         required: false,
         default: null
-      }
+      },
+      transitionMode: Boolean
     }
 
     const draggableComponent = {
@@ -100,7 +101,6 @@
 
       data() {
         return {
-          transitionMode: false,
           noneFunctionalComponentMode: false,
           init: false
         }
@@ -110,9 +110,6 @@
         const slots = this.$slots.default
         if (slots && slots.length === 1) {
           const child = slots[0]
-          if (child.componentOptions && child.componentOptions.tag === "transition-group") {
-            this.transitionMode = true
-          }
         }
         let children = slots
         const { footer } = this.$slots
